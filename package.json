@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "vitest"
+    "test": "vitest",
+    "build": "tsc"
   },
   "keywords": [],
   "author": "Glòria Monzó",
