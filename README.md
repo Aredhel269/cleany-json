@@ -49,10 +49,23 @@ Returns a new object with the unwanted values removed. Only works at the first l
 
 ## Roadmap
 
-* [ ] Option to clean nested objects and arrays
-* [ ] Custom clean rules (e.g., remove `false`, `0`, empty arrays)
-* [ ] Deno support
-* [ ] CLI tool
+### Implemented Features ✔️
+- [x] Deep cleaning (recursive nested object/array cleaning)
+- [x] Flexible configuration (preserve empty strings, nulls, etc.)
+- [x] Empty object/array removal
+- [x] TypeScript support
+- [x] Custom value removal (via `valuesToRemove`)
+
+### Planned Features ✨
+- [ ] Custom predicate functions (for advanced cleaning logic)
+- [ ] Deno support
+- [ ] CLI tool
+- [ ] Browser/UMD build
+- [ ] Option to preserve empty root objects/arrays
+- [ ] Path-specific cleaning
+- [ ] Support for Map, Set and other data structures
+- [ ] Performance optimizations for large datasets
+- [ ] Schema-based cleaning rules
 
 ## License
 
