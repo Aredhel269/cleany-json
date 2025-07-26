@@ -6,8 +6,9 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Glòria Monzó",
+  "github": "https://github.com/aredhel269/cleany-json",
+  "license": "MIT",
   "description": "",
   "devDependencies": {
     "typescript": "^5.8.3",
