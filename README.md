@@ -1,6 +1,6 @@
 # cleany-json
 
-🧹 A lightweight utility to deeply clean JSON objects by removing unwanted values like `null`, `undefined`, empty strings, and empty objects/arrays.
+A lightweight utility to deeply clean JSON objects by removing unwanted values like `null`, `undefined`, empty strings, and empty objects/arrays.
 
 ---
 
@@ -113,7 +113,7 @@ Result:
 
 ## Roadmap
 
-### Implemented Features ✔️
+### Implemented Features
 
 ✅ Recursive deep cleaning  
 ✅ Customizable removal rules  
@@ -121,7 +121,7 @@ Result:
 ✅ Empty object/array handling  
 ✅ Preserve false/0 by default  
 
-### Planned Features ✨
+### Planned Features
 
 * [ ] Custom predicate functions
 * [ ] Deno support
