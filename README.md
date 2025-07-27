@@ -1,76 +1,136 @@
 # cleany-json
 
-🧹 A tiny utility to clean JSON objects by removing `null`, `undefined`, and empty string (`""`) values.
+🧹 A lightweight utility to deeply clean JSON objects by removing unwanted values like `null`, `undefined`, empty strings, and empty objects/arrays.
+
+---
 
 ## Installation
 
-```
+```bash
 npm install cleany-json
-````
-
-## Usage
-
 ```
+
+---
+
+## Basic Usage
+
+```typescript
 import { cleanJson } from 'cleany-json';
 
-const input = {
+const userProfile = {
   name: '',
   age: null,
-  country: 'Spain',
+  address: {
+    street: 'Main St',
+    apartment: undefined,
+    tags: ['', 'javascript', null]
+  },
   active: true,
-  note: undefined,
+  emptyArray: []
 };
 
-const result = cleanJson(input);
-// {
-//   country: 'Spain',
-//   active: true
-// }
+// Basic cleaning
+const cleaned = cleanJson(userProfile);
+
+// Note: cleanJson returns a new cleaned object; the original is not modified.
+
+console.log(cleaned);
+/* 
+Result:
+{
+  address: {
+    street: 'Main St',
+    tags: ['javascript']
+  },
+  active: true
+}
+*/
 ```
 
-## Features
+---
 
-* Removes fields with:
+## Advanced Configuration
 
-  * `null`
-  * `undefined`
-  * empty string (`""`)
-* Keeps:
+```typescript
+// Custom cleaning rules
+const customCleaned = cleanJson(userProfile, {
+  preserveNulls: true,          // Keep null values
+  preserveEmptyStrings: false,  // Remove empty strings (default)
+  valuesToRemove: [undefined],  // Only remove undefined
+  removeEmptyArrays: false      // Keep empty arrays
+});
 
-  * `0`, `false`, and `""` if configured (coming soon)
-* Written in TypeScript
-* Tiny and dependency-free
+/*
+Result:
+{
+  age: null,                    // Preserved
+  address: {
+    street: 'Main St',          // Empty string removed (default)
+    tags: ['javascript']        // Null removed from array
+  },
+  active: true,
+  emptyArray: []                // Preserved
+}
+*/
+```
 
-## API
+---
 
-### `cleanJson(obj: object): object`
+## Key Features
 
-Returns a new object with the unwanted values removed. Only works at the first level (deep cleaning support is planned).
+✅ **Deep Cleaning** - Recursively processes nested objects and arrays  
+✅ **Flexible Rules** - Customize what gets removed or preserved  
+✅ **Type Safe** - Written in TypeScript with full type definitions  
+✅ **Immutable** - Never modifies the original input data  
+✅ **Zero Dependencies** - Lightweight and self-contained  
+
+---
+
+## API Reference
+
+### `cleanJson(value: JsonValue, options?: CleanOptions): JsonValue`
+
+#### Options
+
+| Option                 | Type      | Default                 | Description               |
+| ---------------------- | --------- | ----------------------- | ------------------------- |
+| `preserveEmptyStrings` | `boolean` | `false`                 | Keep empty strings (`""`) |
+| `preserveNulls`        | `boolean` | `false`                 | Keep `null` values        |
+| `valuesToRemove`       | `any[]`   | `[undefined, null, '']` | Custom values to remove   |
+| `removeEmptyObjects`   | `boolean` | `true`                  | Remove empty objects `{}` |
+| `removeEmptyArrays`    | `boolean` | `true`                  | Remove empty arrays `[]`  |
+
+---
+
+## Why Choose cleany-json?
+
+* **More configurable** than basic JSON cleaning utilities
+* **Specialized** for deep nested structures
+* **Predictable behavior** with clear rules
+* **Maintained** with regular updates
+
+---
 
 ## Roadmap
 
 ### Implemented Features ✔️
-- [x] Deep cleaning (recursive nested object/array cleaning)
-- [x] Flexible configuration (preserve empty strings, nulls, etc.)
-- [x] Empty object/array removal
-- [x] TypeScript support
-- [x] Custom value removal (via `valuesToRemove`)
+
+✅ Recursive deep cleaning  
+✅ Customizable removal rules  
+✅ TypeScript support  
+✅ Empty object/array handling  
+✅ Preserve false/0 by default  
 
 ### Planned Features ✨
-- [ ] Custom predicate functions (for advanced cleaning logic)
-- [ ] Deno support
-- [ ] CLI tool
-- [ ] Browser/UMD build
-- [ ] Option to preserve empty root objects/arrays
-- [ ] Path-specific cleaning
-- [ ] Support for Map, Set and other data structures
-- [ ] Performance optimizations for large datasets
-- [ ] Schema-based cleaning rules
+
+* [ ] Custom predicate functions
+* [ ] Deno support
+* [ ] CLI interface
+* [ ] Browser build
+* [ ] Enhanced empty value handling
+
+---
 
 ## License
 
-MIT
-
-## Author
-
-Made with ❤️ by [@aredhel269](https://github.com/aredhel269)
+MIT © [aredhel269](https://github.com/aredhel269)
