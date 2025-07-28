@@ -1,6 +1,6 @@
 {
   "name": "cleany-json",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Lightweight utility to deeply clean JSON objects",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -18,11 +18,15 @@
     "typescript"
   ],
   "author": "Glòria Monzó",
+  "license": "MIT",
+  "homepage": "https://github.com/aredhel269/cleany-json",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/aredhel269/cleany-json.git"
   },
-  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aredhel269/cleany-json/issues"
+  },
   "devDependencies": {
     "typescript": "^5.8.3",
     "vitest": "^3.2.4"
