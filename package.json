@@ -1,6 +1,6 @@
 {
   "name": "cleany-json",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Lightweight utility to deeply clean JSON objects",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
